@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Twitch Streams</title>
+  <link rel="stylesheet" href="content/css/app.css">
+</head>
+<body ng-app="app">
+  <div class="header">
+    <h1>Twitch.tv Streams</h1>
+  </div>
+  <div class="search">
+    <div class="searchBar"></div>
+  </div>
+  <div class="main" ng-controller="StreamsController as vm">
+    <ul class="streamsList" ng-repeat="stream in vm.streams">
+      <li><img ng-src="{{ stream.img }}" /></li>
+      <li><a href="{{ stream.url }}">{{ stream.name }}</a></li>
+    </ul>
+  </div>
+  <!-- Angular -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+  <!-- app module -->
+  <script src="app/app.module.js"></script>
+  <!-- core module -->
+  <script src="app/core/core.module.js"></script>
+  <script src="app/core/constants.js"></script>
+  <!-- streams module -->
+  <script src="app/streams/streams.module.js"></script>
+  <script src="app/streams/streams.controller.js"></script>
+</body>
+</html>

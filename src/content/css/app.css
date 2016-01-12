@@ -1,0 +1,89 @@
+@import url(https://fonts.googleapis.com/css?family=Lato);
+
+$lightBlue: #6fc5d9;
+$orange: #bf4e30;
+$grey: #e4e0e1;
+$font: Lato, Arial, Sans-Serif;
+
+.listNoStyle {
+  list-style-type: none;
+  display: inline-block;
+  border: 1px solid red;
+}
+
+body {
+  background-color: $lightBlue;
+  color: gray;
+}
+
+.sizing {
+  width: 300px;
+  border: 1px solid $orange;
+  margin: 0 auto;
+}
+
+.main {
+  @extend .sizing;
+  background: white;
+  border-top: 1px solid $grey;
+}
+
+ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.main a {
+  font-family: $font;
+  text-decoration: none;
+  color: $orange;
+  margin-left: 10px;
+}
+
+.main a:after {
+  content: '\a';
+  white-space: pre;
+  overflow: hidden;
+}
+
+.main img {
+  vertical-align: middle;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-top: 15px;
+  margin-left: 25px;
+  margin-bottom: 15px;
+}
+
+.header {
+  @extend .sizing;
+  text-align: center;
+  height: 50px;
+  background-color: $orange;
+  color: white;
+}
+
+.header h1 {
+  font-family: $font;
+  font-weight: normal;
+  margin: 0 auto;
+  margin-top: 5px;
+}
+
+.search {
+  @extend .sizing;
+  height: 50px;
+  border-bottom: none;
+  background-color: white;
+}
+
+.searchBar {
+  font-family: $font;
+  height: 20px;
+  width: 80%;
+  border-radius: 20px;
+  border: 1px solid $grey;
+  margin: 0 auto;
+  margin-top: 15px;
+}
