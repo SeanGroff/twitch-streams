@@ -86,7 +86,6 @@
 
   function StreamsController($http, URL, TWITCH_URL, streamersService) {
     var vm = this;
-    var test = 'Test';
 
     vm.streams = streamersService.streams;
 
