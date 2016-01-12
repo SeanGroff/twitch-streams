@@ -1,50 +1,35 @@
 @import url(https://fonts.googleapis.com/css?family=Lato);
-
-$lightBlue: #6fc5d9;
-$orange: #bf4e30;
-$grey: #e4e0e1;
-$font: Lato, Arial, Sans-Serif;
-
 .listNoStyle {
   list-style-type: none;
-  display: inline-block;
-  border: 1px solid red;
-}
+  display: inline-block; }
 
 body {
-  background-color: $lightBlue;
-  color: gray;
-}
+  background-color: #6fc5d9;
+  color: gray; }
 
-.sizing {
+.sizing, .main, .header, .search {
   width: 300px;
-  border: 1px solid $orange;
-  margin: 0 auto;
-}
+  border: 1px solid #bf4e30;
+  margin: 0 auto; }
 
 .main {
-  @extend .sizing;
   background: white;
-  border-top: 1px solid $grey;
-}
+  border-top: 1px solid #e4e0e1; }
 
 ul {
   margin-top: 0;
-  margin-bottom: 0;
-}
+  margin-bottom: 0; }
 
 .main a {
-  font-family: $font;
+  font-family: Lato, Arial, Sans-Serif;
   text-decoration: none;
-  color: $orange;
-  margin-left: 10px;
-}
+  color: #bf4e30;
+  margin-left: 10px; }
 
 .main a:after {
   content: '\a';
   white-space: pre;
-  overflow: hidden;
-}
+  overflow: hidden; }
 
 .main img {
   vertical-align: middle;
@@ -52,38 +37,35 @@ ul {
   width: 50px;
   height: 50px;
   margin-top: 15px;
-  margin-left: 25px;
-  margin-bottom: 15px;
-}
+  margin-left: 5px;
+  margin-bottom: 15px; }
 
 .header {
-  @extend .sizing;
   text-align: center;
   height: 50px;
-  background-color: $orange;
-  color: white;
-}
+  background-color: #bf4e30;
+  color: white; }
 
 .header h1 {
-  font-family: $font;
+  font-family: Lato, Arial, Sans-Serif;
   font-weight: normal;
   margin: 0 auto;
-  margin-top: 5px;
-}
+  margin-top: 5px; }
 
 .search {
-  @extend .sizing;
   height: 50px;
   border-bottom: none;
-  background-color: white;
-}
+  background-color: white; }
 
 .searchBar {
-  font-family: $font;
+  font-family: Lato, Arial, Sans-Serif;
+  font-size: 16px;
   height: 20px;
   width: 80%;
   border-radius: 20px;
-  border: 1px solid $grey;
-  margin: 0 auto;
+  border: 1px solid #e4e0e1;
+  margin-left: 30px;
   margin-top: 15px;
-}
+  text-indent: 20px; }
+
+/*# sourceMappingURL=app.css.map */

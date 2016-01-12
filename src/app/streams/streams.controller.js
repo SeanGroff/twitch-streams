@@ -2,60 +2,17 @@
   'use strict';
 
   angular
-    .module('app.streams' )
+    .module('app.streams')
     .controller('StreamsController', StreamsController);
 
-    StreamsController.$inject = ['$http', 'URL', 'TWITCH_URL'];
+    StreamsController.$inject = ['$http', 'URL', 'TWITCH_URL', 'streamersService'];
 
-    function StreamsController($http, URL, TWITCH_URL) {
+    function StreamsController($http, URL, TWITCH_URL, streamersService) {
       var vm = this;
 
-      var streams = [
-        {
-          name: 'FreeCodeCamp',
-          url: '',
-          img: ''
-        },
-        {
-          name: 'GeoffStorbeck',
-          url: '',
-          img: ''
-        },
-        {
-          name: 'Medrybw',
-          url: '',
-          img: ''
-        },
-        {
-          name: 'lirik',
-          url: '',
-          img: ''
-        },
-        {
-          name: 'Forsenlol',
-          url: '',
-          img: ''
-        },
-        {
-          name: 'AmazHS',
-          url: '',
-          img: ''
-        },
-        {
-          name: 'LAGTVMaximusBlack',
-          url: '',
-          img: ''
-        },
-        {
-          name: 'summit1g',
-          url: '',
-          img: ''
-        },
-      ];
+      vm.streams = streamersService.streams;
 
-      vm.streams = streams;
-
-      streams.map(function(stream) {
+      streamersService.streams.map(function(stream) {
         $http({
           method: 'GET',
           url: URL + 'users/' + stream.name

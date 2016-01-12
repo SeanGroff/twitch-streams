@@ -10,12 +10,11 @@
     <h1>Twitch.tv Streams</h1>
   </div>
   <div class="search">
-    <div class="searchBar"></div>
+    <input type="text" class="searchBar" placeholder="Search" ng-model="search" />
   </div>
   <div class="main" ng-controller="StreamsController as vm">
-    <ul class="streamsList" ng-repeat="stream in vm.streams">
-      <li><img ng-src="{{ stream.img }}" /></li>
-      <li><a href="{{ stream.url }}">{{ stream.name }}</a></li>
+    <ul class="streamsList" ng-repeat="stream in vm.streams | filter: search">
+      <li class="listNoStyle"><img ng-src="{{ stream.img }}" /><a href="{{ stream.url }}">{{ stream.name }}</a></li>
     </ul>
   </div>
   <!-- Angular -->
@@ -25,6 +24,7 @@
   <!-- core module -->
   <script src="app/core/core.module.js"></script>
   <script src="app/core/constants.js"></script>
+  <script src="app/core/streamers.service.js"></script>
   <!-- streams module -->
   <script src="app/streams/streams.module.js"></script>
   <script src="app/streams/streams.controller.js"></script>
