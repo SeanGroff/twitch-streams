@@ -17,7 +17,6 @@
           method: 'GET',
           url: URL + 'streams/' + twitchStream.name
         }).then(function successCb(response) {
-          console.log(response);
           if (response.data.stream) {
             twitchStream.desc = response.data.stream.channel.status;
           }
