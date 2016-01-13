@@ -31,46 +31,30 @@
 (function () {
   'use strict';
 
-  angular.module('app.core').factory('streamersService', streamersService);
+  angular.module('app.core').factory('getStreamsService', getStreamsService);
 
-  function streamersService() {
-    var streamers = {
-      streams: [{
-        name: 'FreeCodeCamp',
-        url: '',
-        img: ''
-      }, {
-        name: 'GeoffStorbeck',
-        url: '',
-        img: ''
-      }, {
-        name: 'Medrybw',
-        url: '',
-        img: ''
-      }, {
-        name: 'lirik',
-        url: '',
-        img: ''
-      }, {
-        name: 'Forsenlol',
-        url: '',
-        img: ''
-      }, {
-        name: 'AmazHS',
-        url: '',
-        img: ''
-      }, {
-        name: 'LAGTVMaximusBlack',
-        url: '',
-        img: ''
-      }, {
-        name: 'summit1g',
-        url: '',
-        img: ''
-      }]
+  getStreamsService.$inject = ['$http', 'URL', 'TWITCH_URL'];
+
+  function getStreamsService($http, URL, TWITCH_URL) {
+    var tStreams = {
+      getStreams: getStreams
     };
 
-    return streamers;
+    function getStreams(twitchStream) {
+      $http({
+        method: 'GET',
+        url: URL + 'streams/' + twitchStream.name
+      }).then(function successCb(response) {
+        console.log(response);
+        if (response.data.stream) {
+          twitchStream.desc = response.data.stream.channel.status;
+        }
+      }, function errorCb(response) {
+        console.log('Error: ' + response);
+      });
+    }
+
+    return tStreams;
   }
 })();
 
@@ -80,26 +64,28 @@
 (function () {
   'use strict';
 
-  angular.module('app.streams').controller('StreamsController', StreamsController);
+  angular.module('app.core').factory('getUsersService', getUsersService);
 
-  StreamsController.$inject = ['$http', 'URL', 'TWITCH_URL', 'streamersService'];
+  getUsersService.$inject = ['$http', 'URL', 'TWITCH_URL'];
 
-  function StreamsController($http, URL, TWITCH_URL, streamersService) {
-    var vm = this;
+  function getUsersService($http, URL, TWITCH_URL) {
+    var users = {
+      getUsers: getUsers
+    };
 
-    vm.streams = streamersService.streams;
-
-    streamersService.streams.map(function (stream) {
+    function getUsers(twitchStream) {
       $http({
         method: 'GET',
-        url: URL + 'users/' + stream.name
+        url: URL + 'users/' + twitchStream.name
       }).then(function successCb(response) {
-        stream.url = TWITCH_URL + response.data.name;
-        stream.img = response.data.logo;
+        twitchStream.url = TWITCH_URL + response.data.name;
+        twitchStream.img = response.data.logo;
       }, function errorCb(reponse) {
         console.log('Error: ' + reponse);
       });
-    });
+    }
+
+    return users;
   }
 })();
 
@@ -109,7 +95,86 @@
 (function () {
   'use strict';
 
+  angular.module('app.core').factory('streamersService', streamersService);
+
+  function streamersService() {
+    var streamers = {
+      streams: [{
+        name: 'FreeCodeCamp',
+        url: '',
+        img: '',
+        desc: ''
+      }, {
+        name: 'GeoffStorbeck',
+        url: '',
+        img: '',
+        desc: ''
+      }, {
+        name: 'Medrybw',
+        url: '',
+        img: '',
+        desc: ''
+      }, {
+        name: 'lirik',
+        url: '',
+        img: '',
+        desc: ''
+      }, {
+        name: 'Forsenlol',
+        url: '',
+        img: '',
+        desc: ''
+      }, {
+        name: 'AmazHS',
+        url: '',
+        img: '',
+        desc: ''
+      }, {
+        name: 'LAGTVMaximusBlack',
+        url: '',
+        img: '',
+        desc: ''
+      }, {
+        name: 'summit1g',
+        url: '',
+        img: '',
+        desc: ''
+      }]
+    };
+
+    return streamers;
+  }
+})();
+
+},{}],7:[function(require,module,exports){
+'use strict';
+
+(function () {
+  'use strict';
+
+  angular.module('app.streams').controller('StreamsController', StreamsController);
+
+  StreamsController.$inject = ['$http', 'URL', 'TWITCH_URL', 'streamersService', 'getUsersService', 'getStreamsService'];
+
+  function StreamsController($http, URL, TWITCH_URL, streamersService, getUsersService, getStreamsService) {
+    var vm = this;
+
+    vm.streams = streamersService.streams;
+
+    streamersService.streams.map(function (twitchStream) {
+      getUsersService.getUsers(twitchStream);
+      getStreamsService.getStreams(twitchStream);
+    });
+  }
+})();
+
+},{}],8:[function(require,module,exports){
+'use strict';
+
+(function () {
+  'use strict';
+
   angular.module('app.streams', []);
 })();
 
-},{}]},{},[1,2,3,4,5,6]);
+},{}]},{},[1,2,3,4,5,6,7,8]);

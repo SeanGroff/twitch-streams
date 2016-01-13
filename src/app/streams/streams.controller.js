@@ -5,24 +5,16 @@
     .module('app.streams')
     .controller('StreamsController', StreamsController);
 
-    StreamsController.$inject = ['$http', 'URL', 'TWITCH_URL', 'streamersService'];
+    StreamsController.$inject = ['$http', 'URL', 'TWITCH_URL', 'streamersService', 'getUsersService', 'getStreamsService'];
 
-    function StreamsController($http, URL, TWITCH_URL, streamersService) {
+    function StreamsController($http, URL, TWITCH_URL, streamersService, getUsersService, getStreamsService) {
       var vm = this;
 
       vm.streams = streamersService.streams;
 
-      streamersService.streams.map(function(stream) {
-        $http({
-          method: 'GET',
-          url: URL + 'users/' + stream.name
-        }).then(function successCb(response) {
-          stream.url = TWITCH_URL + response.data.name;
-          stream.img = response.data.logo;
-        }, function errorCb(reponse) {
-          console.log('Error: ' + reponse);
-        });
+      streamersService.streams.map(function(twitchStream) {
+        getUsersService.getUsers(twitchStream);
+        getStreamsService.getStreams(twitchStream);
       });
-
     }
 })();

@@ -53,6 +53,31 @@ ul {
   margin-top: 15px;
   margin-left: 5px;
   margin-bottom: 15px;
+  float:left;
+}
+
+.liContainer {
+  position: relative;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+  margin-top: 30px;
+}
+
+.clear {
+  font-size: 12px;
+  margin-top: 0px;
+  margin-left: 10px;
+  clear: right;
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .header {

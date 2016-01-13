@@ -11,42 +11,50 @@
           {
             name: 'FreeCodeCamp',
             url: '',
-            img: ''
+            img: '',
+            desc: ''
           },
           {
             name: 'GeoffStorbeck',
             url: '',
-            img: ''
+            img: '',
+            desc: ''
           },
           {
             name: 'Medrybw',
             url: '',
-            img: ''
+            img: '',
+            desc: ''
           },
           {
             name: 'lirik',
             url: '',
-            img: ''
+            img: '',
+            desc: ''
           },
           {
             name: 'Forsenlol',
             url: '',
-            img: ''
+            img: '',
+            desc: ''
           },
           {
             name: 'AmazHS',
             url: '',
-            img: ''
+            img: '',
+            desc: ''
           },
           {
             name: 'LAGTVMaximusBlack',
             url: '',
-            img: ''
+            img: '',
+            desc: ''
           },
           {
             name: 'summit1g',
             url: '',
-            img: ''
+            img: '',
+            desc: ''
           }
         ]
       };

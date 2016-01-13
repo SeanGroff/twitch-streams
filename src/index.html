@@ -14,7 +14,13 @@
   </div>
   <div class="main" ng-controller="StreamsController as vm">
     <ul class="streamsList" ng-repeat="stream in vm.streams | filter: search">
-      <li class="listNoStyle"><img ng-src="{{ stream.img }}" /><a href="{{ stream.url }}">{{ stream.name }}</a></li>
+      <li class="listNoStyle liContainer">
+        <div class="left"><img ng-src="{{ stream.img }}" /></div>
+        <div class="right">
+          <a href="{{ stream.url }}"><span ng-bind="stream.name"></span></a>
+          <p class="clear" ng-bind="stream.desc"></p>
+        </div>
+      </li>
     </ul>
   </div>
   <!-- Angular -->
@@ -25,6 +31,8 @@
   <script src="app/core/core.module.js"></script>
   <script src="app/core/constants.js"></script>
   <script src="app/core/streamers.service.js"></script>
+  <script src="app/core/getUsers.service.js"></script>
+  <script src="app/core/getStreams.service.js"></script>
   <!-- streams module -->
   <script src="app/streams/streams.module.js"></script>
   <script src="app/streams/streams.controller.js"></script>
